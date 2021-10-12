@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gcp:
+      datastore:
+        project-id: fresh-span-242610
+        credentials:
+          location: classpath:/static/fresh-span-242610-f9bd930c01b1.json
+
+management:
+  health:
+    datastore:
+      enabled: false
