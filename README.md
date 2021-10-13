@@ -20,8 +20,25 @@ spring:
  Choose one from Service Accounts (if you don't have one just create it) <br/>
  Press **Edit Service Account** and go to **Keys** <br/>
  Press Add Key and choose JSON, then the .json file will be created for you <br/>
+ The JSON file should look like this:
  
- For security reasons Google won't let you redownload it.
+ ```
+ {
+  "type": "service_account",
+  "project_id": "your_project_id", //change this
+  "private_key_id": "your_private_key_id", //change this
+  "private_key": "your_private_key", //change this
+  "client_email": "nensi-test@fresh-span-242610.iam.gserviceaccount.com", //change this
+  "client_id": "your_client_id", //change this
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "your_client_x509_cert_url" //change this
+}
+```
+Place this JSON under resources/static and configure application.yml live above.
+ 
+Keep in mind to store this file because for security reasons Google won't let you redownload it.
 
 ## Technologies used: 
 
