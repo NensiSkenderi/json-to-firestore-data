@@ -13,25 +13,26 @@ class UserController {
     @Autowired
     lateinit var userService: UserService
 
-    @GetMapping("/findAll")
+    @GetMapping
     fun findAllUsers(): List<User> {
         return userService.findAll()
     }
 
-    @PostMapping("/create")
+    @PostMapping
     fun createUser(): List<User> {
         val user = Utils.readJsonFile<User>("/data/single_user.json")
         return userService.createUser(user)
     }
 
-    @DeleteMapping("/delete")
-    fun deleteUser(): List<User> {
+    @DeleteMapping("{key}")
+    fun deleteUser(@PathVariable key: String): List<User> {
+        userService.deleteUser(key)
         return userService.findAll()
     }
 
-    @PostMapping("/save")
-    fun saveAllUsers(users: List<User>): List<User> {
-        val user = Utils.readJsonFile<User>("/data/single_user.json")
+    @PostMapping("/saveAllUsers")
+    fun saveAllUsers(): List<User> {
+        val users = Utils.readJsonFile<List<User>>("/data/users.json")
         return userService.saveAllUsers(users);
     }
 }
